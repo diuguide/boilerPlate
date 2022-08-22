@@ -28,7 +28,7 @@ echo ".  -- -- -- "
 echo "C |  |  |  |"
 echo ".  -- -- -- "
 
-elif [ "$1" == "A1" ]
+elif [ "$1" = "A1" ]
 then
 	echo $line1
 	echo $line2
