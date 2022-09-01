@@ -1,5 +1,5 @@
 #!/bin/bash
-
+turn=2
 if [ -n "$1" ]
 then
 	echo $1
@@ -32,13 +32,19 @@ elif [ "$1" = "A1" ]
 then
 	echo $line1
 	echo $line2
-	echo "A |X |  |  |"
+	echo "A |X| | |"
 	echo $line4
 	echo $line5
 	echo $line6
 	echo $line7
 	echo $line8
+	turn=1
 fi
+if [ $turn = 1 ]
+then
+	./main/sh
+else
+./main.sh
 
 exit
 
