@@ -46,6 +46,18 @@ then
 else
 ./main.sh
 
-exit
+function renderBoard() {
+
+	if [ -z "$@" ] 
+	then
+		echo arguments are empty;
+	fi;
+
+
+}
+
+renderBoard
+
+
 
 
