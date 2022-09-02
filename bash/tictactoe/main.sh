@@ -1,10 +1,10 @@
 #!/bin/bash
 
-./renderBoard.sh
+./render.sh
 
 read -p "Player move..." playervar
 
-./renderBoard.sh "${playervar}"
+./render.sh $playervar
 
 exit
 
