@@ -19,5 +19,40 @@ done;
 
 }
 
+
+function renderSquare() {
+
+	if [ -z "$@" ]
+	then
+		echo -n []
+	elif [ $1 = "x" ] 
+	then
+		echo -n [x]
+	else
+		echo -n [o]
+	fi
+
+}
+
+function printBoard() {
+
+        for num in 0 1 2 3 4 5 6 7 8
+        do
+		if [ $num == "2" ] || [ $num == "5" ]
+		then 
+		renderSquare
+		echo ''
+		else
+		renderSquare
+		fi
+
+	done
+
+
+}
+
+printBoard
+
+
 exit;
 
