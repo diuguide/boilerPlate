@@ -4,7 +4,7 @@
 
 read -p "Player move..." playervar
 
-d=`date '+H%m%s'`
+d=`date '+%Y%m%d%H%M%S'`
 
 mkdir temp
 
