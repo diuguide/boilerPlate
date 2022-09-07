@@ -1,6 +1,14 @@
 #!/bin/bash
 
+# Color Codes
+
+RED="\e[1;31m"
+GREEN="\e[1;32m"
+ENDCOLOR="\e[0m"
+
 #function creates a blank board - takes two arguments an array of each players moves
+
+clear
 
 containsElement () {
   local e match="$1"
@@ -16,12 +24,12 @@ function renderSquare() {
 		echo -n '[ ]'
 	elif [ $1 = "x" ] 
 	then
-		echo -n [x]
+		echo -n -e "[${RED}x${ENDCOLOR}]"
 	elif [ $1 = "o" ]
 	then
-		echo -n [o]
+		echo -n -e "[${GREEN}o${ENDCOLOR}]"
 	else
-		echo -n '[ ]'
+		echo -n [$1]
 	fi
 
 }
