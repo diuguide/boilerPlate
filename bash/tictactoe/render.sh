@@ -25,47 +25,27 @@ function renderSquare() {
 
 function printBoard() {
 	
-	if [[ -z "$@" ]]
-	then
-        	for num in 0 1 2 3 4 5 6 7 8
-        	do
-			if [ $num == "2" ] || [ $num == "5" ]
-			then 
-				renderSquare
-				echo 
-			else
-				renderSquare
-			fi
-
-			done
-	else
-		
-		for num in 0 1 2 3 4 5 6 7 8
+	count=0
+	while [ $count -lt 9 ]; do
+	 while read p;
                 do
-                        if [ $num == "2" ] || [ $num == "5" ]
+                        if [ $count == "2" ] || [ $count == "5" ]
                         then
-				containsElement $num $@
-				echo $?
-                                renderSquare 
+                                renderSquare
                                 echo
                         else
-                                renderSquare
+                               renderSquare
                         fi
+                    count=$(( $count + 1 ));
+                done < "./guide.dat"
+	
 
-                        done
-
-	fi
-
+	done
 
 }
 
-if [[ -z "$@" ]] 
-then
-	printBoard
-else
-	
-	printBoard $@
-fi
+printBoard
+
 
 exit;
 
