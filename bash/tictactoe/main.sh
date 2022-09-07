@@ -1,5 +1,7 @@
 #!/bin/bash
 
+d=`date '+%Y%m%d%H%M%S'`
+
 cp "./guide.dat" "./runner.dat"
 
 function updateRunner () {
@@ -23,24 +25,59 @@ done < $file_path
 
 echo 0 > "./state/firstmove.dat"
 
-
 ./render.sh
-
-read -p "Player move..." playervar
-
-d=`date '+%Y%m%d%H%M%S'`
 
 echo 1 > "./state/firstmove.dat"
 
-updateRunner 3 x
+read -p "Player move..." playervar
+
+updateRunner $playervar x
 
 ./render.sh 
 
 read -p "Player move..." playervar
 
-updateRunner 6 o
+updateRunner $playervar o
 
 ./render.sh
+
+read -p "Player move..." playervar
+
+updateRunner $playervar x
+
+./render.sh
+
+read -p "Player move..." playervar
+
+updateRunner $playervar o
+
+./render.sh
+
+read -p "Player move..." playervar
+
+updateRunner $playervar x
+
+./render.sh
+
+read -p "Player move..." playervar
+
+updateRunner $playervar o
+
+./render.sh
+
+read -p "Player move..." playervar
+
+updateRunner $playervar x
+
+./render.sh
+
+read -p "Player move..." playervar
+
+updateRunner $playervar o
+
+./render.sh
+
+
 
 cp  "./runner.dat"  "./hist/match$d.txt"
 
