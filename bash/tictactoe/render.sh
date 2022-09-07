@@ -13,12 +13,15 @@ function renderSquare() {
 
 	if [ -z "$@" ]
 	then
-		echo -n []
+		echo -n '[ ]'
 	elif [ $1 = "x" ] 
 	then
 		echo -n [x]
-	else
+	elif [ $1 = "o" ]
+	then
 		echo -n [o]
+	else
+		echo -n '[ ]'
 	fi
 
 }
@@ -26,23 +29,28 @@ function renderSquare() {
 function printBoard() {
 	
 	count=0
+
+	textVar=$( cat "./state/firstmove.dat" )
+	
+	[[ $textVar -eq 0 ]] && file_path="./guide.dat" || file_path="./runner.dat"
+
 	while [ $count -lt 9 ]; do
-	 while read p;
+		while read p;
                 do
-                        if [ $count == "2" ] || [ $count == "5" ]
+			if [ $count == "2" ] || [ $count == "5" ]
                         then
-                                renderSquare
+                                renderSquare $p
                                 echo
                         else
-                               renderSquare
+                                renderSquare $p
                         fi
-                    count=$(( $count + 1 ));
-                done < "./guide.dat"
-	
+                    	count=$(( $count + 1 ));
+	    	done < $file_path
 
 	done
 
 }
+
 
 printBoard
 
