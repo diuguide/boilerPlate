@@ -2,6 +2,10 @@
 
 d=`date '+%Y%m%d%H%M%S'`
 
+rm p1.dat
+
+touch p1.dat
+
 cp "./guide.dat" "./runner.dat"
 
 function updateRunner () {
@@ -16,6 +20,7 @@ do
 	if [ $index -eq $1 ] 
 	then
 		sed -i "s/$index/$2/1" "./runner.dat"
+		echo $index $2 >> "./p1.dat"
 	fi
 	index=$(( $index + 1 ))
 done < $file_path
