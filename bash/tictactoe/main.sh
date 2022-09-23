@@ -22,62 +22,37 @@ done < $file_path
 
 }
 
-
 echo 0 > "./state/firstmove.dat"
 
 ./render.sh
 
 echo 1 > "./state/firstmove.dat"
 
-read -p "Player move..." playervar
+gameover=$( cat "./state/gameover.dat" )
+movecount=0
 
-updateRunner $playervar x
-
-./render.sh 
-
-read -p "Player move..." playervar
-
-updateRunner $playervar o
-
-./render.sh
+while [ $gameover -eq 0 ];
+do
 
 read -p "Player move..." playervar
 
 updateRunner $playervar x
-
+movecount=$(( $movecount + 1 ))
 ./render.sh
 
 read -p "Player move..." playervar
 
 updateRunner $playervar o
-
+movecount=$(( $movecount + 1 ))
 ./render.sh
 
-read -p "Player move..." playervar
-
-updateRunner $playervar x
-
-./render.sh
-
-read -p "Player move..." playervar
-
-updateRunner $playervar o
-
-./render.sh
-
-read -p "Player move..." playervar
-
-updateRunner $playervar x
-
-./render.sh
-
-read -p "Player move..." playervar
-
-updateRunner $playervar o
-
-./render.sh
+if [ $movecount -gt 4 ] 
+then
+	./calculateWin.sh
+fi
 
 
+done
 
 cp  "./runner.dat"  "./hist/match$d.txt"
 

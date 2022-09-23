@@ -8,8 +8,6 @@ ENDCOLOR="\e[0m"
 
 #function creates a blank board - takes two arguments an array of each players moves
 
-clear
-
 containsElement () {
   local e match="$1"
   shift
