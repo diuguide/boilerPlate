@@ -23,13 +23,11 @@ function updateRunner() {
 
 }
 
-
-
 ./render.sh
 
 echo 1 >"./state/firstmove.dat"
 
-while [ $gameover -eq 0 ] && [ $movecount -le 9 ]; do
+while [ $gameover -eq 0 ] && [ $movecount -le 8 ]; do
 
 	echo
 	echo
@@ -54,9 +52,17 @@ while [ $gameover -eq 0 ] && [ $movecount -le 9 ]; do
 	gameover=$(cat "./state/gameover.dat")
 
 done
-
-echo GAME OVER!
-
+echo
+echo
+echo
+if [[ $gameover -eq 0 ]]; then
+	echo NOBODY WINS!
+	echo
+	echo
+	echo GAME OVER!
+else
+	echo GAME OVER!
+fi
 rm -rf ./state
 
 exit
