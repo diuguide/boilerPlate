@@ -51,7 +51,7 @@ updateRunner $playervar o
 movecount=$(( $movecount + 1 ))
 ./render.sh
 
-if [ $movecount -gt 4 ] 
+if [ $movecount -ge 4 ] 
 then
 	./calculateWin.sh
 fi
