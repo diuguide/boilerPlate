@@ -1,8 +1,8 @@
 #!/bin/bash
 clear
-
-d=$(date '+%Y%m%d%H%M%S')
+mkdir state
 echo 0 >"./state/gameover.dat"
+echo 0 >"./state/firstmove.dat"
 cp "./guide.dat" "./runner.dat"
 gameover=$(cat "./state/gameover.dat")
 movecount=0
@@ -23,19 +23,22 @@ function updateRunner() {
 
 }
 
-echo 0 >"./state/firstmove.dat"
+
 
 ./render.sh
 
 echo 1 >"./state/firstmove.dat"
 
 while [ $gameover -eq 0 ] && [ $movecount -le 9 ]; do
+
 	echo
-	read -p "Player move..." playervar
+	echo
 
 	if [[ $playerToggle -eq 0 ]]; then
+		read -p "Player X move..." playervar
 		updateRunner $playervar x
 	elif [[ $playerToggle -eq 1 ]]; then
+		read -p "Player O move..." playervar
 		updateRunner $playervar o
 	fi
 
@@ -54,6 +57,6 @@ done
 
 echo GAME OVER!
 
-cp "./runner.dat" "./hist/match$d.txt"
+rm -rf ./state
 
 exit

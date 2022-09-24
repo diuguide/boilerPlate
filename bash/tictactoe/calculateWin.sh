@@ -16,11 +16,11 @@ done <"./runner.dat"
 while IFS= read -r line1; do
     if [[ $p1 == *$line1* ]]; then
         echo
-        echo "player 1 wins!"
+        echo "PLAYER X WINS!"
         echo 1 >"./state/gameover.dat"
     elif [[ $p2 == *$line1* ]]; then
         echo
-        echo "player 2 wins!"
+        echo "PLAYER O WINS!"
         echo 1 >"./state/gameover.dat"
     fi
 done <"./win.dat"
